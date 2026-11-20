@@ -19,6 +19,9 @@ xcodebuild -project Perkle.xcodeproj -scheme Perkle -configuration Debug build C
 # Build and run from Xcode: open Perkle.xcodeproj, then Cmd-R
 ```
 
+Release (build, Developer ID sign, DMG, notarize, tag and GitHub release): bump `MARKETING_VERSION` in the project, commit, then `scripts/release.sh <version> [notes.md]`.
+It needs a Developer ID Application certificate and the `perkle-notary` notarytool keychain profile; see the script header.
+
 Running the app needs calendar permission and a real menu bar, so verify UI behaviour by launching it, not just by compiling.
 The project uses "Sign to Run Locally"; macOS may re-prompt for calendar access after rebuilds.
 
@@ -32,4 +35,4 @@ The project uses "Sign to Run Locally"; macOS may re-prompt for calendar access 
 - **Loudness levels map to presentation:** whisper = menu bar icon wiggle (state in `AppState`), nudge = non-activating floating `NSPanel` (`FloatingPanel` in `WindowManager`, must never steal keyboard focus), insist = full-screen dimmed break window. Auto-dismiss is handled in `WindowManager`.
 - **Persistence** is UserDefaults only: `settings.v1` (JSON-encoded `AppSettings`), the stand log, and `hasOnboarded.v1`. `AppSettings.init(from:)` decodes each key with `decodeIfPresent` and a default, so when adding a setting, add it there too or old saves will reset.
 - **Styling** goes through `Theme` (colours, outlines, hard shadows, buttons, toggles); Pip and the menu bar icon are drawn in code in `PipView`. Pip's wording lives in `PipCopy` in `Models.swift`.
-- **App name** is `AppInfo.name` in `Models.swift`; renaming also needs the bundle ID (`com.example.perkle`) and display name changed in the target settings.
+- **App name** is `AppInfo.name` in `Models.swift`; renaming also needs the bundle ID (`com.markstent.perkle`) and display name changed in the target settings.

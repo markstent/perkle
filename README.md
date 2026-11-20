@@ -15,6 +15,10 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/markstent/perkle/releases/latest"><img src="https://img.shields.io/github/v/release/markstent/perkle?style=for-the-badge&label=Download%20for%20Mac&labelColor=16161D&color=FF6A3D&logo=apple&logoColor=white" alt="Download for Mac"></a>
+</p>
+
+<p align="center">
   <b>Your chair is lovely.</b>
   <br>
   <b>Pip would still like you to leave it now and then.</b>
@@ -85,7 +89,16 @@ Pick how loud Pip gets:
 - **Nudge**: a card in the corner that never takes the keyboard from whatever you're typing in.
 - **Insist**: the screen dims for a short break.
 
-## Run it
+## Install
+
+1. Download `Perkle-x.y.dmg` from the [latest release](https://github.com/markstent/perkle/releases/latest).
+2. Open it and drag **Perkle** into **Applications**.
+3. Launch Perkle. Pip appears in the menu bar (top right) and a welcome window opens.
+
+Perkle needs macOS 14 (Sonoma) or later.
+It is signed and notarized by Apple, so it opens without security warnings.
+
+## Build from source
 
 1. You need **macOS 14 (Sonoma) or later** and **Xcode 15 or later**.
 2. Clone the repo and open `Perkle.xcodeproj`.
@@ -137,7 +150,7 @@ Pip ignores all-day events, events marked "free", cancelled events and invitatio
 The name appears in three places:
 
 1. `AppInfo.name` in `Models.swift`.
-2. The bundle ID `com.example.perkle`: change it in the target's **Signing & Capabilities**.
+2. The bundle ID `com.markstent.perkle`: change it in the target's **Signing & Capabilities**.
 3. The display name: target › **Build Settings** › "Bundle Display Name".
 
 ## Notes
