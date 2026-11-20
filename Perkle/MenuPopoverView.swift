@@ -43,7 +43,7 @@ struct MenuPopoverView: View {
         }
         .padding(18)
         .frame(width: 330)
-        .background(Theme.paper)
+        .background(state.canvas)
         .environment(\.colorScheme, .light)
     }
 
@@ -101,23 +101,22 @@ struct MenuPopoverView: View {
     private var today: some View {
         let goal = state.settings.dailyGoal
         let done = state.todayCount
-        let slots = max(goal, done)
         return VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("Today").font(Theme.body(13, .semibold)).foregroundStyle(Theme.ink)
                 Spacer()
-                Text("\(done) of \(goal) stands")
+                Text(state.standsProgress)
                     .font(Theme.body(13, .medium))
                     .foregroundStyle(Theme.muted)
             }
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 24, maximum: 30), spacing: 6)],
                       alignment: .leading, spacing: 6) {
-                ForEach(0..<slots, id: \.self) { index in
+                ForEach(0..<goal, id: \.self) { index in
                     StandToken(filled: index < done, accent: accent, width: 24, height: 30)
                 }
             }
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel("\(done) of \(goal) stands today")
+            .accessibilityLabel(state.standsProgress)
         }
     }
 
@@ -165,7 +164,7 @@ struct MenuPopoverView: View {
         }
         .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(Theme.soft))
+        .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(Theme.paper))
     }
 
     private var actions: some View {
@@ -203,7 +202,7 @@ struct MenuPopoverView: View {
 
     private func meetingNote(for block: BusyBlock) -> String {
         let source = block.calendarName.isEmpty ? "" : block.calendarName + " · "
-        if block.start <= state.now { return source + "on now — I’m staying quiet" }
+        if block.start <= state.now { return source + "on now, I’m staying quiet" }
         return source + "I’ll wait till it ends"
     }
 }

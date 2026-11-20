@@ -25,7 +25,7 @@ struct WelcomeView: View {
                 Text("Hi, I’m Pip.")
                     .font(Theme.display(34))
                     .foregroundStyle(Theme.ink)
-                Text("I’ll nudge you to stand up during your working day — and I’ll keep out of your meetings. You’ll find me in the menu bar, top right.")
+                Text("I’ll nudge you to stand up during your working day, and I’ll keep out of your meetings. You’ll find me in the menu bar, top right.")
                     .font(Theme.body(14))
                     .foregroundStyle(Theme.ink2)
                     .multilineTextAlignment(.center)
@@ -37,7 +37,7 @@ struct WelcomeView: View {
                 stepRow(number: 1,
                         title: "Connect your calendars",
                         detail: state.calendarService.hasAccess
-                            ? "Connected — I can see Google, Outlook and iCloud calendars on this Mac."
+                            ? "Connected! I can see Google, Outlook and iCloud calendars on this Mac."
                             : "So I never pop up mid-meeting. Nothing leaves your Mac.") {
                     if state.calendarService.hasAccess {
                         Label("Done", systemImage: "checkmark")
@@ -73,7 +73,7 @@ struct WelcomeView: View {
             .padding(.bottom, 32)
         }
         .frame(width: Self.windowSize.width, height: Self.windowSize.height)
-        .background(Theme.paper)
+        .background(state.canvas)
         .environment(\.colorScheme, .light)
     }
 

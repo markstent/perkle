@@ -353,8 +353,16 @@ final class AppState: ObservableObject {
     // MARK: Display helpers
 
     var accent: Color { settings.accent.color }
+    var canvas: Color { settings.accent.canvas }
+    var canvasDeep: Color { settings.accent.canvasDeep }
 
     var todayCount: Int { log.count(on: now) }
+
+    /// "3 of 8 stands", or a cheer once the goal is passed.
+    var standsProgress: String {
+        let goal = settings.dailyGoal
+        return todayCount > goal ? "\(todayCount) stands, goal beaten!" : "\(todayCount) of \(goal) stands"
+    }
 
     var isPaused: Bool { pausedUntil != nil }
 
@@ -398,7 +406,7 @@ final class AppState: ObservableObject {
             return Headline(label: "Pip says", value: "Stand up!", detail: sittingText)
         }
         guard let next = nextNudge else {
-            return Headline(label: "No nudges", value: "—", detail: "Pick working days in Settings")
+            return Headline(label: "No nudges", value: "-", detail: "Pick working days in Settings")
         }
         if !isWorkingNow || !Calendar.current.isDate(next, inSameDayAs: now) {
             return Headline(label: "Off duty",
@@ -413,11 +421,12 @@ final class AppState: ObservableObject {
     /// The body text of a nudge.
     func nudgeMessage(at date: Date = Date()) -> String {
         let mins = max(1, Int(date.timeIntervalSince(sittingSince) / 60))
+        let sat = mins == 1 ? "1 minute" : "\(mins) minutes"
         if let meeting = Scheduler.meetingSoon(in: busy, now: date) {
             let until = max(1, Int(ceil(meeting.start.timeIntervalSince(date) / 60)))
-            return "\(mins) minutes in the chair. “\(meeting.title)” starts in \(until) min — perfect window."
+            return "\(sat) in the chair. “\(meeting.title)” starts in \(until) min. Perfect window."
         }
-        return "\(mins) minutes in the chair. Time to stretch those legs."
+        return "\(sat) in the chair. Time to stretch those legs."
     }
 
     var lastSevenDays: [DayStat] {

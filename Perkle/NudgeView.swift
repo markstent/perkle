@@ -83,11 +83,11 @@ struct NudgeView: View {
                     Text("Nice one.")
                         .font(Theme.display(28))
                         .foregroundStyle(Theme.ink)
-                    Text("\(state.todayCount) of \(state.settings.dailyGoal) stands today")
+                    Text(state.standsProgress)
                         .font(Theme.body(14))
                         .foregroundStyle(Theme.ink2)
                     HStack(spacing: 5) {
-                        ForEach(0..<min(max(state.settings.dailyGoal, state.todayCount), 12), id: \.self) { index in
+                        ForEach(0..<min(state.settings.dailyGoal, 12), id: \.self) { index in
                             StandToken(filled: index < state.todayCount, accent: accent)
                         }
                     }
@@ -176,7 +176,7 @@ struct InsistView: View {
                 .foregroundStyle(Theme.ink)
 
             Text(cheering
-                 ? "\(state.todayCount) of \(state.settings.dailyGoal) stands today"
+                 ? state.standsProgress
                  : "Stand up, stretch, look at something far away.")
                 .font(Theme.body(15))
                 .foregroundStyle(Theme.ink2)

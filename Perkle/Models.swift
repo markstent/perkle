@@ -49,6 +49,26 @@ enum AccentChoice: String, Codable, CaseIterable, Identifiable {
         case .sun: return Color(hex: 0xFFC93C)
         }
     }
+
+    /// Window background: a pale wash of the accent so the white sticker cards pop.
+    var canvas: Color {
+        switch self {
+        case .tangerine: return Color(hex: 0xFFF1E8)
+        case .mint: return Color(hex: 0xEAFAF2)
+        case .sky: return Color(hex: 0xEDF2FF)
+        case .sun: return Color(hex: 0xFFF8DD)
+        }
+    }
+
+    /// A deeper wash for side panels.
+    var canvasDeep: Color {
+        switch self {
+        case .tangerine: return Color(hex: 0xFFE2D1)
+        case .mint: return Color(hex: 0xD3F3E4)
+        case .sky: return Color(hex: 0xDCE6FF)
+        case .sun: return Color(hex: 0xFFEFB8)
+        }
+    }
 }
 
 // MARK: - Settings
@@ -243,7 +263,7 @@ enum PipCopy {
 // MARK: - App name
 
 /// The one place the app's display name lives in code.
-/// (Also change PRODUCT_NAME / the bundle display name in the project — see README.)
+/// (Also change PRODUCT_NAME / the bundle display name in the project, see README.)
 enum AppInfo {
     static let name = "Perkle"
 }

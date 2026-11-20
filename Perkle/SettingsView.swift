@@ -28,7 +28,7 @@ struct SettingsView: View {
             }
         }
         .frame(width: Self.windowSize.width, height: Self.windowSize.height)
-        .background(Theme.paper)
+        .background(state.canvas)
         .environment(\.colorScheme, .light)
     }
 
@@ -74,7 +74,7 @@ struct SettingsView: View {
         .padding(.bottom, 20)
         .frame(width: 210)
         .frame(maxHeight: .infinity)
-        .background(Theme.soft)
+        .background(state.canvasDeep)
     }
 }
 
@@ -293,7 +293,7 @@ private struct CalendarsPane: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 22) {
             PaneTitle("Calendars")
-            Note("\(AppInfo.name) reads the calendars on this Mac — Google, Microsoft 365 / Outlook, iCloud — so it never nudges you mid-meeting. Nothing leaves your Mac.")
+            Note("\(AppInfo.name) reads the calendars on this Mac (Google, Microsoft 365 / Outlook, iCloud), so it never nudges you mid-meeting. Nothing leaves your Mac.")
                 .frame(maxWidth: 520, alignment: .leading)
 
             statusCard

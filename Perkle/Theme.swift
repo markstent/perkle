@@ -124,7 +124,8 @@ struct ChipButtonStyle: ButtonStyle {
     var circle = false
 
     func makeBody(configuration: Configuration) -> some View {
-        let shape = RoundedRectangle(cornerRadius: circle ? 20 : 12, style: .continuous)
+        // Circular style: a continuous radius of half the width leaves flat notches instead of a circle.
+        let shape = RoundedRectangle(cornerRadius: circle ? 20 : 12, style: circle ? .circular : .continuous)
         return configuration.label
             .font(Theme.body(13, .semibold))
             .foregroundStyle(selected ? Theme.ink : Theme.ink2)
@@ -160,8 +161,8 @@ struct StickerToggleStyle: ToggleStyle {
                     .foregroundStyle(Theme.ink)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 ZStack(alignment: configuration.isOn ? .trailing : .leading) {
-                    Capsule().fill(configuration.isOn ? accent : Theme.soft)
-                    Capsule().strokeBorder(Theme.ink, lineWidth: 2.5)
+                    Capsule(style: .circular).fill(configuration.isOn ? accent : Theme.soft)
+                    Capsule(style: .circular).strokeBorder(Theme.ink, lineWidth: 2.5)
                     Circle()
                         .fill(Theme.paper)
                         .overlay(Circle().strokeBorder(Theme.ink, lineWidth: 2))
@@ -211,7 +212,7 @@ struct StandToken: View {
     var height: CGFloat = 18
 
     var body: some View {
-        let shape = RoundedRectangle(cornerRadius: width / 2, style: .continuous)
+        let shape = Capsule(style: .circular)
         ZStack {
             if filled {
                 shape.fill(accent)
