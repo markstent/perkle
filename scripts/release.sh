@@ -3,19 +3,19 @@
 #
 # Usage: scripts/release.sh 1.0 [notes.md]
 #
-# Needs, once per Mac:
-#   - a "Developer ID Application" certificate in the keychain
-#   - notarization credentials saved as the "perkle-notary" keychain profile:
-#       xcrun notarytool store-credentials perkle-notary --apple-id <email> --team-id <team>
-#   - gh, logged in
+# Signing and notarization go through the Apple account signed in to Xcode
+# (Xcode > Settings > Accounts), using Apple's cloud-managed Developer ID
+# certificate, so no certificate or password needs to be on this Mac.
+# Also needs gh, logged in.
 set -euo pipefail
 
 VERSION="${1:?usage: scripts/release.sh <version> [notes.md]}"
 NOTES="${2:-}"
+TEAM="${PERKLE_TEAM:-739RVEUAP4}"
 TAG="v$VERSION"
-PROFILE="perkle-notary"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/build/release"
+ARCHIVE="$OUT/Perkle.xcarchive"
 DMG="$OUT/Perkle-$VERSION.dmg"
 
 cd "$ROOT"
@@ -25,19 +25,11 @@ cd "$ROOT"
 ! git rev-parse -q --verify "refs/tags/$TAG" >/dev/null || { echo "Tag $TAG already exists." >&2; exit 1; }
 grep -q "MARKETING_VERSION = $VERSION;" Perkle.xcodeproj/project.pbxproj \
     || { echo "MARKETING_VERSION in the project is not $VERSION." >&2; exit 1; }
-IDENTITY="$(security find-identity -v -p codesigning | grep -m1 -o '"Developer ID Application: [^"]*"' | tr -d '"')" \
-    || { echo "No Developer ID Application certificate found." >&2; exit 1; }
-TEAM="$(sed -E 's/.*\(([A-Z0-9]+)\)$/\1/' <<<"$IDENTITY")"
-xcrun notarytool history --keychain-profile "$PROFILE" >/dev/null \
-    || { echo "Notary profile '$PROFILE' is missing or invalid." >&2; exit 1; }
-echo "Signing as: $IDENTITY"
 
 rm -rf "$OUT" && mkdir -p "$OUT"
 
-# 1. Archive and export a Developer ID signed app.
-xcodebuild archive -project Perkle.xcodeproj -scheme Perkle -configuration Release \
-    -archivePath "$OUT/Perkle.xcarchive" DEVELOPMENT_TEAM="$TEAM" -quiet
-cat >"$OUT/export.plist" <<EOF
+export_options() { # $1 = destination: export | upload
+    cat <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -45,25 +37,42 @@ cat >"$OUT/export.plist" <<EOF
     <key>method</key><string>developer-id</string>
     <key>teamID</key><string>$TEAM</string>
     <key>signingStyle</key><string>automatic</string>
+    <key>destination</key><string>$1</string>
 </dict>
 </plist>
 EOF
-xcodebuild -exportArchive -archivePath "$OUT/Perkle.xcarchive" \
-    -exportOptionsPlist "$OUT/export.plist" -exportPath "$OUT/export" -quiet
-APP="$OUT/export/Perkle.app"
-codesign --verify --deep --strict "$APP"
+}
 
-# 2. DMG with a drag-to-Applications shortcut.
-mkdir -p "$OUT/dmg"
-cp -R "$APP" "$OUT/dmg/"
-ln -s /Applications "$OUT/dmg/Applications"
-hdiutil create -volname "Perkle $VERSION" -srcfolder "$OUT/dmg" -ov -format UDZO "$DMG" >/dev/null
-codesign --sign "$IDENTITY" --timestamp "$DMG"
+# 1. Archive, then upload a Developer ID signed copy to Apple's notary service.
+xcodebuild archive -project Perkle.xcodeproj -scheme Perkle -configuration Release \
+    -archivePath "$ARCHIVE" DEVELOPMENT_TEAM="$TEAM" -allowProvisioningUpdates -quiet
+export_options upload >"$OUT/upload.plist"
+xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportOptionsPlist "$OUT/upload.plist" \
+    -exportPath "$OUT/upload" -allowProvisioningUpdates -quiet
 
-# 3. Notarize and staple, then check Gatekeeper accepts it.
-xcrun notarytool submit "$DMG" --keychain-profile "$PROFILE" --wait
-xcrun stapler staple "$DMG"
-spctl --assess --type open --context context:primary-signature --verbose "$DMG"
+# 2. Wait for notarization, then export the stapled app (up to 30 minutes).
+echo "Waiting for notarization..."
+for _ in $(seq 1 60); do
+    if xcodebuild -exportNotarizedApp -archivePath "$ARCHIVE" -exportPath "$OUT/notarized" >"$OUT/notarize.log" 2>&1; then
+        break
+    fi
+    if grep -qiE "invalid|rejected" "$OUT/notarize.log"; then
+        cat "$OUT/notarize.log" >&2; exit 1
+    fi
+    sleep 30
+done
+APP="$OUT/notarized/Perkle.app"
+[[ -d "$APP" ]] || { echo "Notarization did not finish in time." >&2; cat "$OUT/notarize.log" >&2; exit 1; }
+xcrun stapler validate "$APP"
+spctl --assess --type execute --verbose "$APP"
+
+# 3. DMG with a drag-to-Applications shortcut. Staged outside the repo so
+#    sync tools (Dropbox) can't add their extended attributes to the app.
+STAGE="$(mktemp -d)"
+trap 'rm -rf "$STAGE"' EXIT
+ditto --norsrc --noextattr --noacl "$APP" "$STAGE/Perkle.app"
+ln -s /Applications "$STAGE/Applications"
+hdiutil create -volname "Perkle $VERSION" -srcfolder "$STAGE" -ov -format UDZO "$DMG" >/dev/null
 
 # 4. Tag and publish.
 git tag -a "$TAG" -m "Perkle $VERSION"

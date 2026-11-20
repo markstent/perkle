@@ -20,7 +20,7 @@ xcodebuild -project Perkle.xcodeproj -scheme Perkle -configuration Debug build C
 ```
 
 Release (build, Developer ID sign, DMG, notarize, tag and GitHub release): bump `MARKETING_VERSION` in the project, commit, then `scripts/release.sh <version> [notes.md]`.
-It needs a Developer ID Application certificate and the `perkle-notary` notarytool keychain profile; see the script header.
+Signing and notarization use Apple's cloud-managed Developer ID certificate through the Mashwork LTD account (team `739RVEUAP4`) signed in to Xcode, so no local certificate or notary password is needed.
 
 Running the app needs calendar permission and a real menu bar, so verify UI behaviour by launching it, not just by compiling.
 The project uses "Sign to Run Locally"; macOS may re-prompt for calendar access after rebuilds.
