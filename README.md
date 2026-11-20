@@ -30,7 +30,7 @@
 
 Pip is a small, glossy, slightly bossy jelly bean who lives in your menu bar.
 Every 45 minutes or so (you pick), Pip pops up in the corner and asks you to stand.
-Pip reads your calendars first, so you never get a nudge halfway through a meeting.
+Pip reads the calendars on your Mac first (iCloud, Google, Microsoft 365 / Outlook and anything else in the macOS Calendar app), so you never get a nudge halfway through a meeting.
 Instead, Pip catches you just before the meeting starts, or a minute after it ends.
 
 <p align="center">
@@ -115,15 +115,22 @@ xcodebuild -project Perkle.xcodeproj -scheme Perkle -configuration Debug -derive
 open build/Build/Products/Debug/Perkle.app
 ```
 
-## Google and work calendars
+## Which calendars Pip reads
 
-Pip reads every calendar your Mac knows about.
-To add more, go to **System Settings › Internet Accounts**:
+Pip doesn't sign in to any calendar service itself.
+It reads the calendars macOS already syncs, the same ones you see in the **Calendar** app, through Apple's EventKit framework.
+That covers:
 
-- **Google**: add your Google account and turn on Calendars.
-- **Outlook / Microsoft 365 (work)**: add a **Microsoft Exchange** account and turn on Calendars.
+| Calendar | How to get it onto your Mac |
+|---|---|
+| **iCloud** | Already there if you're signed in to iCloud with Calendars turned on |
+| **Google Calendar** | **System Settings › Internet Accounts › Google**, turn on Calendars |
+| **Outlook / Microsoft 365 / Exchange** | **System Settings › Internet Accounts › Microsoft Exchange**, turn on Calendars |
+| **Yahoo, Fastmail and other CalDAV accounts** | **System Settings › Internet Accounts**, add the account and turn on Calendars |
+| **Subscribed calendars** (.ics links) | In Calendar.app, **File › New Calendar Subscription…** |
 
-They then show up under **Perkle Settings › Calendars**, where you can switch individual calendars off.
+If it shows up in Calendar.app, Pip can see it.
+Calendars then show up under **Perkle Settings › Calendars**, where you can switch individual calendars off.
 If your company blocks Exchange sign-in on personal Macs, ask IT, or subscribe to your work calendar in Calendar.app instead.
 
 Pip ignores all-day events, events marked "free", cancelled events and invitations you've declined.
