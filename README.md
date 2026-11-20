@@ -22,7 +22,7 @@
 
 ---
 
-## 👋 Meet Pip
+## Meet Pip
 
 Pip is a small, glossy, slightly bossy jelly bean who lives in your menu bar.
 Every 45 minutes or so (you pick), Pip pops up in the corner and asks you to stand.
@@ -35,7 +35,7 @@ Instead, Pip catches you just before the meeting starts, or a minute after it en
   <sub><i>Idle, stretching, cheering and sleepy. Pip is drawn entirely in code, so it stays crisp at any size.</i></sub>
 </p>
 
-## ✨ What it looks like
+## What it looks like
 
 <table>
   <tr>
@@ -69,23 +69,23 @@ Instead, Pip catches you just before the meeting starts, or a minute after it en
   </tr>
 </table>
 
-## 🧠 How Pip decides when to nudge
+## How Pip decides when to nudge
 
 | Situation | What Pip does |
 |---|---|
-| ⏱️ You've been sitting for *N* minutes (45 by default) | Nudges you, but only within your working hours and days |
-| 📅 The nudge would land in a meeting and you've been sitting a while | Comes about **2 minutes before** the meeting starts |
-| 📅 The nudge would land in a meeting otherwise | Comes about **1 minute after** it ends, skipping back-to-back meetings |
-| 💤 You lock the screen, sleep the Mac or go idle for 5+ minutes | Counts it as a stand and restarts the clock |
-| 🙈 You ignore a nudge | It leaves on its own after 60 seconds and asks again after the snooze time |
+| You've been sitting for *N* minutes (45 by default) | Nudges you, but only within your working hours and days |
+| The nudge would land in a meeting and you've been sitting a while | Comes about **2 minutes before** the meeting starts |
+| The nudge would land in a meeting otherwise | Comes about **1 minute after** it ends, skipping back-to-back meetings |
+| You lock the screen, sleep the Mac or go idle for 5+ minutes | Counts it as a stand and restarts the clock |
+| You ignore a nudge | It leaves on its own after 60 seconds and asks again after the snooze time |
 
 Pick how loud Pip gets:
 
-- 🤫 **Whisper**: the menu bar icon wiggles.
-- 👉 **Nudge**: a card in the corner that never takes the keyboard from whatever you're typing in.
-- 📣 **Insist**: the screen dims for a short break.
+- **Whisper**: the menu bar icon wiggles.
+- **Nudge**: a card in the corner that never takes the keyboard from whatever you're typing in.
+- **Insist**: the screen dims for a short break.
 
-## 🚀 Run it
+## Run it
 
 1. You need **macOS 14 (Sonoma) or later** and **Xcode 15 or later**.
 2. Clone the repo and open `Perkle.xcodeproj`.
@@ -102,7 +102,7 @@ xcodebuild -project Perkle.xcodeproj -scheme Perkle -configuration Debug -derive
 open build/Build/Products/Debug/Perkle.app
 ```
 
-## 📅 Google and work calendars
+## Google and work calendars
 
 Pip reads every calendar your Mac knows about.
 To add more, go to **System Settings › Internet Accounts**:
@@ -115,7 +115,7 @@ If your company blocks Exchange sign-in on personal Macs, ask IT, or subscribe t
 
 Pip ignores all-day events, events marked "free", cancelled events and invitations you've declined.
 
-## 🗂️ What's inside
+## What's inside
 
 | File | What it does |
 |---|---|
@@ -132,7 +132,7 @@ Pip ignores all-day events, events marked "free", cancelled events and invitatio
 | `Theme.swift` | The "Sticker" look: colours, outlines, hard shadows, buttons, toggles |
 | `Models.swift` | Settings, stand log, wording and the app name |
 
-## 🏷️ Renaming
+## Renaming
 
 The name appears in three places:
 
@@ -140,7 +140,7 @@ The name appears in three places:
 2. The bundle ID `com.example.perkle`: change it in the target's **Signing & Capabilities**.
 3. The display name: target › **Build Settings** › "Bundle Display Name".
 
-## 📝 Notes
+## Notes
 
 - Headlines use SF Pro Rounded, which ships with macOS, instead of Fredoka. To use Fredoka, add its .ttf files to the target and swap `Theme.display`.
 - With "Sign to Run Locally", macOS may ask for calendar permission again after some rebuilds. Signing with your own team avoids this.
@@ -148,5 +148,5 @@ The name appears in three places:
 
 <p align="center">
   <br>
-  <sub>Made with 🧡 for people who forget they have legs.</sub>
+  <sub>Made for people who forget they have legs.</sub>
 </p>
