@@ -1,0 +1,326 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		881EB8B1A57BC55D22771E39 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F721405B1CCAA902E482FF /* AppState.swift */; };
+		4BCBEC0F35814776A17E6947 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92946F98A23EBFB8ABD575BA /* CalendarService.swift */; };
+		CCE8EEB81C0EF9BD1E190A2F /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5529AF8DBAA171D19B54AD1 /* MainApp.swift */; };
+		9D638A9534B0F130B4B81235 /* MenuPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889E1E25A328DA2E2BFFA00 /* MenuPopoverView.swift */; };
+		5CD30681D78E1D36A49EF0CF /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0925950F659FA1BD73E1A84D /* Models.swift */; };
+		5601CF2D9FA0C5B73623C1C9 /* NudgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211121F8753435FC04895EC /* NudgeView.swift */; };
+		954997EDE5926C59C409CF0E /* PipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B40601AD54231D74B22A8 /* PipView.swift */; };
+		2874884C5C535C7BAE9D5A71 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6C41302F9A83254D5066A /* Scheduler.swift */; };
+		8451968B9D9C17CA0A0A2662 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00412A9788D6B63606A2E89B /* SettingsView.swift */; };
+		6EEF94E5BB6EBA4AC6AFE56A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6659392DBA47025001A16D6 /* Theme.swift */; };
+		2BB321807FFDFC25B797B4B8 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9DDA082B7E2D5044415FF /* WelcomeView.swift */; };
+		BC98EACB949C39C60C192B0B /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A310AF5DF14F5B5F38536E9 /* WindowManager.swift */; };
+		A9314EB089A732F172FE22FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68E6CA23BCAB67054AA0D21 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C25E53F0D03AFAE84D42484E /* Perkle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Perkle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		26F721405B1CCAA902E482FF /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		92946F98A23EBFB8ABD575BA /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		F5529AF8DBAA171D19B54AD1 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
+		1889E1E25A328DA2E2BFFA00 /* MenuPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopoverView.swift; sourceTree = "<group>"; };
+		0925950F659FA1BD73E1A84D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		0211121F8753435FC04895EC /* NudgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NudgeView.swift; sourceTree = "<group>"; };
+		BD7B40601AD54231D74B22A8 /* PipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipView.swift; sourceTree = "<group>"; };
+		47C6C41302F9A83254D5066A /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		00412A9788D6B63606A2E89B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F6659392DBA47025001A16D6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		36D9DDA082B7E2D5044415FF /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		4A310AF5DF14F5B5F38536E9 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		E68E6CA23BCAB67054AA0D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1F0E2F06AF9D7E6C1F0633C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C693EF133AFA24C93EF36CC /* Perkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Perkle.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D5B37778464B3FF803CFC083 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3FD77F5EC32073C92B323FD2 = {
+			isa = PBXGroup;
+			children = (
+				C6598E4DEDD17EE8E9EBDD50 /* Perkle */,
+				F3002F03B4C0025698DA5330 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F3002F03B4C0025698DA5330 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C25E53F0D03AFAE84D42484E /* Perkle.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6598E4DEDD17EE8E9EBDD50 /* Perkle */ = {
+			isa = PBXGroup;
+			children = (
+				26F721405B1CCAA902E482FF /* AppState.swift */,
+				92946F98A23EBFB8ABD575BA /* CalendarService.swift */,
+				F5529AF8DBAA171D19B54AD1 /* MainApp.swift */,
+				1889E1E25A328DA2E2BFFA00 /* MenuPopoverView.swift */,
+				0925950F659FA1BD73E1A84D /* Models.swift */,
+				0211121F8753435FC04895EC /* NudgeView.swift */,
+				BD7B40601AD54231D74B22A8 /* PipView.swift */,
+				47C6C41302F9A83254D5066A /* Scheduler.swift */,
+				00412A9788D6B63606A2E89B /* SettingsView.swift */,
+				F6659392DBA47025001A16D6 /* Theme.swift */,
+				36D9DDA082B7E2D5044415FF /* WelcomeView.swift */,
+				4A310AF5DF14F5B5F38536E9 /* WindowManager.swift */,
+				E68E6CA23BCAB67054AA0D21 /* Assets.xcassets */,
+				B1F0E2F06AF9D7E6C1F0633C /* Info.plist */,
+				0C693EF133AFA24C93EF36CC /* Perkle.entitlements */,
+			);
+			path = Perkle;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD41BE5D533859691E8D13EE /* Perkle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 739893FD0BBC6E46C8EC69BB /* Build configuration list for PBXNativeTarget "Perkle" */;
+			buildPhases = (
+				B083779558D19079F12C652F /* Sources */,
+				D5B37778464B3FF803CFC083 /* Frameworks */,
+				46C6D26FE045C1FDF337E36A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Perkle;
+			productName = Perkle;
+			productReference = C25E53F0D03AFAE84D42484E /* Perkle.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E18215D1F04AE7DF11565B86 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					BD41BE5D533859691E8D13EE = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 29F4086F77D59B562472AA75 /* Build configuration list for PBXProject "Perkle" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3FD77F5EC32073C92B323FD2;
+			productRefGroup = F3002F03B4C0025698DA5330 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD41BE5D533859691E8D13EE /* Perkle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46C6D26FE045C1FDF337E36A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9314EB089A732F172FE22FD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B083779558D19079F12C652F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				881EB8B1A57BC55D22771E39 /* AppState.swift in Sources */,
+				4BCBEC0F35814776A17E6947 /* CalendarService.swift in Sources */,
+				CCE8EEB81C0EF9BD1E190A2F /* MainApp.swift in Sources */,
+				9D638A9534B0F130B4B81235 /* MenuPopoverView.swift in Sources */,
+				5CD30681D78E1D36A49EF0CF /* Models.swift in Sources */,
+				5601CF2D9FA0C5B73623C1C9 /* NudgeView.swift in Sources */,
+				954997EDE5926C59C409CF0E /* PipView.swift in Sources */,
+				2874884C5C535C7BAE9D5A71 /* Scheduler.swift in Sources */,
+				8451968B9D9C17CA0A0A2662 /* SettingsView.swift in Sources */,
+				6EEF94E5BB6EBA4AC6AFE56A /* Theme.swift in Sources */,
+				2BB321807FFDFC25B797B4B8 /* WelcomeView.swift in Sources */,
+				BC98EACB949C39C60C192B0B /* WindowManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C228BD03AF82B23D0286B6AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		85E069AC5EB6FABBF40032DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		5CCFF542F297BB3D7D0D1180 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Perkle/Perkle.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Perkle/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Perkle;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.perkle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		28BE18B92F867267BD6E8C7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Perkle/Perkle.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Perkle/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Perkle;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.perkle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		29F4086F77D59B562472AA75 /* Build configuration list for PBXProject "Perkle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C228BD03AF82B23D0286B6AF /* Debug */,
+				85E069AC5EB6FABBF40032DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		739893FD0BBC6E46C8EC69BB /* Build configuration list for PBXNativeTarget "Perkle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CCFF542F297BB3D7D0D1180 /* Debug */,
+				28BE18B92F867267BD6E8C7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E18215D1F04AE7DF11565B86 /* Project object */;
+}
